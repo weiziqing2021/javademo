@@ -3,18 +3,15 @@ package com.leaning.firstweek.Controller;
 import com.alibaba.fastjson.JSON;
 import com.leaning.firstweek.Models.EmployeeModel;
 import org.omg.CORBA.PUBLIC_MEMBER;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
 
-@RestController()
-@RequestMapping("/Employee")
+@RestController
+@RequestMapping("/employee")
 public class EmployeeController {
     /*
      * 获取雇员列表*/
@@ -47,6 +44,19 @@ public class EmployeeController {
         return JSON.toJSONString(model,true);
     }
 
+    @RequestMapping(method = RequestMethod.GET,value = "/querybyname/{name}")
+    public String getEmployeeById(@PathVariable String name){
+        return  name;
+    }
 
+    /*学习要点区分 注解requestbody pathvariable requestparam 区别和作用
+    * requestbody 截取post body内容
+    * pathvariable 截取地址栏里的
+    * requestparam ?问好传参
+    * */
+    @GetMapping("/delete")
+    public Integer delEmployeeByName(@RequestParam("name") String name){
+        return  1;
+    }
 
 }
