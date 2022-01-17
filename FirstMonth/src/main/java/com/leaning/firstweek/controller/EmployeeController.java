@@ -1,11 +1,9 @@
-package com.leaning.firstweek.Controller;
+package com.leaning.firstweek.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.leaning.firstweek.Models.EmployeeModel;
-import org.omg.CORBA.PUBLIC_MEMBER;
+import com.leaning.firstweek.viewmodels.EmployeeModel;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;

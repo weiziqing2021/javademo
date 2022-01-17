@@ -1,4 +1,4 @@
-package com.leaning.firstweek.Controller;
+package com.leaning.firstweek.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

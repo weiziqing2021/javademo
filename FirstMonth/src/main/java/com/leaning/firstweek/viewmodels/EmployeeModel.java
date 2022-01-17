@@ -1,11 +1,13 @@
-package com.leaning.firstweek.Models;
+package com.leaning.firstweek.viewmodels;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.alibaba.fastjson.support.spring.annotation.FastJsonFilter;
 
 import java.util.Date;
 
 public class EmployeeModel {
+
+
+    public  long id;
     //雇员姓名
     private  String name;
     @JSONField(format = "yyyy-MM-dd")
@@ -16,10 +18,23 @@ public class EmployeeModel {
     private Date joinDate;
     //雇员求职信息从哪里来
     private String employeeFrom;
+
+    /*
+    * 唯一号*/
+    public long getId() {
+        return id;
+    }
+    /*唯一号*/
+    public void setId(long id) {
+        this.id = id;
+    }
+
     /*雇员姓名*/
     public String getName() {
         return name;
     }
+
+
     /*雇员姓名*/
     public void setName(String name) {
         this.name = name;
