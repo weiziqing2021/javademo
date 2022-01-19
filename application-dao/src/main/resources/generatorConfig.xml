@@ -13,7 +13,7 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!--数据库链接URL，用户名、密码       要改-->
-        <jdbcConnection  driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://39.108.8.246:10001/test" userId="sa" password="11aaAA">
+        <jdbcConnection  driverClass="com.mysql.jdbc.Driver" connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.userpassword}">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
