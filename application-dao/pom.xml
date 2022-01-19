@@ -11,7 +11,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.16</version>
+            <version>5.1.47</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis.generator</groupId>
@@ -34,10 +34,11 @@
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
-                        <version>8.0.16</version>
+                        <version>5.1.47</version>
+                        <scope>runtime</scope>
                     </dependency>
-
                 </dependencies>
+
                 <configuration>
                     <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
                     <verbose>true</verbose>

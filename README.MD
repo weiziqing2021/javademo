@@ -17,4 +17,9 @@
     学习mybaties,新建dao实现DDD
 ###第二天 2022-1-18 pm
     学习构思设计dao层基础代码 ，增加生成器mybaties generation，设计思想里增加行乐观锁，方式数据更新并发
+###第三天 2022-1-19 pm
+    mybatis-generator-maven-plugin插件遇，始终无法连接mysql数据库。
+    虽然不知道是什么原因处理步骤：
+        idea 打开database 新建连接连接mysql.会自动加载mysql-connector-java驱动和版本。参照一下copy到pom里。统一版本连接成功。
+        可怜的一小时已过，明天再战。
      
