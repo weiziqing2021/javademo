@@ -1,10 +1,9 @@
 package com.firstapp.dao.model;
 
+import com.firstapp.common.mybatis.model.BaseEntity;
 import java.util.Date;
 
 public class Employee extends BaseEntity {
-    private Long id;
-
     private String name;
 
     private Date birthday;
@@ -12,32 +11,6 @@ public class Employee extends BaseEntity {
     private Date joindate;
 
     private String employeefrom;
-
-    private Date rowupdatetime;
-
-    private Date curcreatetime;
-
-    public Employee(Long id, String name, Date birthday, Date joindate, String employeefrom, Date rowupdatetime, Date curcreatetime) {
-        this.id = id;
-        this.name = name;
-        this.birthday = birthday;
-        this.joindate = joindate;
-        this.employeefrom = employeefrom;
-        this.rowupdatetime = rowupdatetime;
-        this.curcreatetime = curcreatetime;
-    }
-
-    public Employee() {
-        super();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -69,21 +42,5 @@ public class Employee extends BaseEntity {
 
     public void setEmployeefrom(String employeefrom) {
         this.employeefrom = employeefrom == null ? null : employeefrom.trim();
-    }
-
-    public Date getRowupdatetime() {
-        return rowupdatetime;
-    }
-
-    public void setRowupdatetime(Date rowupdatetime) {
-        this.rowupdatetime = rowupdatetime;
-    }
-
-    public Date getCurcreatetime() {
-        return curcreatetime;
-    }
-
-    public void setCurcreatetime(Date curcreatetime) {
-        this.curcreatetime = curcreatetime;
     }
 }

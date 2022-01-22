@@ -12,5 +12,6 @@
     <modules>
         <module>application-dao</module>
         <module>FirstMonth</module>
+        <module>application-common-mybatis</module>
     </modules>
 </project>

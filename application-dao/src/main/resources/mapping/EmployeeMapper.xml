@@ -2,6 +2,922 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.firstapp.dao.mapper.EmployeeMapper">
   <resultMap id="BaseResultMap" type="com.firstapp.dao.model.Employee">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="joindate" jdbcType="DATE" property="joindate" />
+    <result column="employeefrom" jdbcType="VARCHAR" property="employeefrom" />
+    <result column="rowupdatetime" jdbcType="TIMESTAMP" property="rowupdatetime" />
+    <result column="curcreatetime" jdbcType="TIMESTAMP" property="curcreatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, birthday, joindate, employeefrom, rowupdatetime, curcreatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employees
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from employees
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.firstapp.dao.model.Employee">
+    insert into employees (id, name, birthday, 
+      joindate, employeefrom, rowupdatetime, 
+      curcreatetime)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
+      #{joindate,jdbcType=DATE}, #{employeefrom,jdbcType=VARCHAR}, #{rowupdatetime,jdbcType=TIMESTAMP}, 
+      #{curcreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.firstapp.dao.model.Employee">
+    insert into employees
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="joindate != null">
+        joindate,
+      </if>
+      <if test="employeefrom != null">
+        employeefrom,
+      </if>
+      <if test="rowupdatetime != null">
+        rowupdatetime,
+      </if>
+      <if test="curcreatetime != null">
+        curcreatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="joindate != null">
+        #{joindate,jdbcType=DATE},
+      </if>
+      <if test="employeefrom != null">
+        #{employeefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rowupdatetime != null">
+        #{rowupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="curcreatetime != null">
+        #{curcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.firstapp.dao.model.Employee">
+    update employees
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="joindate != null">
+        joindate = #{joindate,jdbcType=DATE},
+      </if>
+      <if test="employeefrom != null">
+        employeefrom = #{employeefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rowupdatetime != null">
+        rowupdatetime = #{rowupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="curcreatetime != null">
+        curcreatetime = #{curcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.firstapp.dao.model.Employee">
+    update employees
+    set name = #{name,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      joindate = #{joindate,jdbcType=DATE},
+      employeefrom = #{employeefrom,jdbcType=VARCHAR},
+      rowupdatetime = #{rowupdatetime,jdbcType=TIMESTAMP},
+      curcreatetime = #{curcreatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.firstapp.dao.model.Employee">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="joindate" jdbcType="DATE" property="joindate" />
+    <result column="employeefrom" jdbcType="VARCHAR" property="employeefrom" />
+    <result column="rowupdatetime" jdbcType="TIMESTAMP" property="rowupdatetime" />
+    <result column="curcreatetime" jdbcType="TIMESTAMP" property="curcreatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, birthday, joindate, employeefrom, rowupdatetime, curcreatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employees
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from employees
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.firstapp.dao.model.Employee">
+    insert into employees (id, name, birthday, 
+      joindate, employeefrom, rowupdatetime, 
+      curcreatetime)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
+      #{joindate,jdbcType=DATE}, #{employeefrom,jdbcType=VARCHAR}, #{rowupdatetime,jdbcType=TIMESTAMP}, 
+      #{curcreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.firstapp.dao.model.Employee">
+    insert into employees
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="joindate != null">
+        joindate,
+      </if>
+      <if test="employeefrom != null">
+        employeefrom,
+      </if>
+      <if test="rowupdatetime != null">
+        rowupdatetime,
+      </if>
+      <if test="curcreatetime != null">
+        curcreatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="joindate != null">
+        #{joindate,jdbcType=DATE},
+      </if>
+      <if test="employeefrom != null">
+        #{employeefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rowupdatetime != null">
+        #{rowupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="curcreatetime != null">
+        #{curcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.firstapp.dao.model.Employee">
+    update employees
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="joindate != null">
+        joindate = #{joindate,jdbcType=DATE},
+      </if>
+      <if test="employeefrom != null">
+        employeefrom = #{employeefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rowupdatetime != null">
+        rowupdatetime = #{rowupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="curcreatetime != null">
+        curcreatetime = #{curcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.firstapp.dao.model.Employee">
+    update employees
+    set name = #{name,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      joindate = #{joindate,jdbcType=DATE},
+      employeefrom = #{employeefrom,jdbcType=VARCHAR},
+      rowupdatetime = #{rowupdatetime,jdbcType=TIMESTAMP},
+      curcreatetime = #{curcreatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.firstapp.dao.model.Employee">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="birthday" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="joindate" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="employeefrom" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="rowupdatetime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="curcreatetime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, birthday, joindate, employeefrom, rowupdatetime, curcreatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employees
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from employees
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.firstapp.dao.model.Employee">
+    insert into employees (id, name, birthday, 
+      joindate, employeefrom, rowupdatetime, 
+      curcreatetime)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
+      #{joindate,jdbcType=DATE}, #{employeefrom,jdbcType=VARCHAR}, #{rowupdatetime,jdbcType=TIMESTAMP}, 
+      #{curcreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.firstapp.dao.model.Employee">
+    insert into employees
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="joindate != null">
+        joindate,
+      </if>
+      <if test="employeefrom != null">
+        employeefrom,
+      </if>
+      <if test="rowupdatetime != null">
+        rowupdatetime,
+      </if>
+      <if test="curcreatetime != null">
+        curcreatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="joindate != null">
+        #{joindate,jdbcType=DATE},
+      </if>
+      <if test="employeefrom != null">
+        #{employeefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rowupdatetime != null">
+        #{rowupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="curcreatetime != null">
+        #{curcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.firstapp.dao.model.Employee">
+    update employees
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="joindate != null">
+        joindate = #{joindate,jdbcType=DATE},
+      </if>
+      <if test="employeefrom != null">
+        employeefrom = #{employeefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rowupdatetime != null">
+        rowupdatetime = #{rowupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="curcreatetime != null">
+        curcreatetime = #{curcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.firstapp.dao.model.Employee">
+    update employees
+    set name = #{name,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      joindate = #{joindate,jdbcType=DATE},
+      employeefrom = #{employeefrom,jdbcType=VARCHAR},
+      rowupdatetime = #{rowupdatetime,jdbcType=TIMESTAMP},
+      curcreatetime = #{curcreatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.firstapp.dao.model.Employee">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="birthday" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="joindate" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="employeefrom" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="rowupdatetime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="curcreatetime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, birthday, joindate, employeefrom, rowupdatetime, curcreatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employees
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from employees
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.firstapp.dao.model.Employee">
+    insert into employees (id, name, birthday, 
+      joindate, employeefrom, rowupdatetime, 
+      curcreatetime)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
+      #{joindate,jdbcType=DATE}, #{employeefrom,jdbcType=VARCHAR}, #{rowupdatetime,jdbcType=TIMESTAMP}, 
+      #{curcreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.firstapp.dao.model.Employee">
+    insert into employees
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="joindate != null">
+        joindate,
+      </if>
+      <if test="employeefrom != null">
+        employeefrom,
+      </if>
+      <if test="rowupdatetime != null">
+        rowupdatetime,
+      </if>
+      <if test="curcreatetime != null">
+        curcreatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="joindate != null">
+        #{joindate,jdbcType=DATE},
+      </if>
+      <if test="employeefrom != null">
+        #{employeefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rowupdatetime != null">
+        #{rowupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="curcreatetime != null">
+        #{curcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.firstapp.dao.model.Employee">
+    update employees
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="joindate != null">
+        joindate = #{joindate,jdbcType=DATE},
+      </if>
+      <if test="employeefrom != null">
+        employeefrom = #{employeefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rowupdatetime != null">
+        rowupdatetime = #{rowupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="curcreatetime != null">
+        curcreatetime = #{curcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.firstapp.dao.model.Employee">
+    update employees
+    set name = #{name,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      joindate = #{joindate,jdbcType=DATE},
+      employeefrom = #{employeefrom,jdbcType=VARCHAR},
+      rowupdatetime = #{rowupdatetime,jdbcType=TIMESTAMP},
+      curcreatetime = #{curcreatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.firstapp.dao.model.Employee">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="birthday" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="joindate" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="employeefrom" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="rowupdatetime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="curcreatetime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, birthday, joindate, employeefrom, rowupdatetime, curcreatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employees
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from employees
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.firstapp.dao.model.Employee">
+    insert into employees (id, name, birthday, 
+      joindate, employeefrom, rowupdatetime, 
+      curcreatetime)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
+      #{joindate,jdbcType=DATE}, #{employeefrom,jdbcType=VARCHAR}, #{rowupdatetime,jdbcType=TIMESTAMP}, 
+      #{curcreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.firstapp.dao.model.Employee">
+    insert into employees
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="joindate != null">
+        joindate,
+      </if>
+      <if test="employeefrom != null">
+        employeefrom,
+      </if>
+      <if test="rowupdatetime != null">
+        rowupdatetime,
+      </if>
+      <if test="curcreatetime != null">
+        curcreatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="joindate != null">
+        #{joindate,jdbcType=DATE},
+      </if>
+      <if test="employeefrom != null">
+        #{employeefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rowupdatetime != null">
+        #{rowupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="curcreatetime != null">
+        #{curcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.firstapp.dao.model.Employee">
+    update employees
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="joindate != null">
+        joindate = #{joindate,jdbcType=DATE},
+      </if>
+      <if test="employeefrom != null">
+        employeefrom = #{employeefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rowupdatetime != null">
+        rowupdatetime = #{rowupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="curcreatetime != null">
+        curcreatetime = #{curcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.firstapp.dao.model.Employee">
+    update employees
+    set name = #{name,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      joindate = #{joindate,jdbcType=DATE},
+      employeefrom = #{employeefrom,jdbcType=VARCHAR},
+      rowupdatetime = #{rowupdatetime,jdbcType=TIMESTAMP},
+      curcreatetime = #{curcreatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.firstapp.dao.model.Employee">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="birthday" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="joindate" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="employeefrom" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="rowupdatetime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="curcreatetime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, birthday, joindate, employeefrom, rowupdatetime, curcreatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employees
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from employees
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.firstapp.dao.model.Employee">
+    insert into employees (id, name, birthday, 
+      joindate, employeefrom, rowupdatetime, 
+      curcreatetime)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
+      #{joindate,jdbcType=DATE}, #{employeefrom,jdbcType=VARCHAR}, #{rowupdatetime,jdbcType=TIMESTAMP}, 
+      #{curcreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.firstapp.dao.model.Employee">
+    insert into employees
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="joindate != null">
+        joindate,
+      </if>
+      <if test="employeefrom != null">
+        employeefrom,
+      </if>
+      <if test="rowupdatetime != null">
+        rowupdatetime,
+      </if>
+      <if test="curcreatetime != null">
+        curcreatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="joindate != null">
+        #{joindate,jdbcType=DATE},
+      </if>
+      <if test="employeefrom != null">
+        #{employeefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rowupdatetime != null">
+        #{rowupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="curcreatetime != null">
+        #{curcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.firstapp.dao.model.Employee">
+    update employees
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="joindate != null">
+        joindate = #{joindate,jdbcType=DATE},
+      </if>
+      <if test="employeefrom != null">
+        employeefrom = #{employeefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rowupdatetime != null">
+        rowupdatetime = #{rowupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="curcreatetime != null">
+        curcreatetime = #{curcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.firstapp.dao.model.Employee">
+    update employees
+    set name = #{name,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      joindate = #{joindate,jdbcType=DATE},
+      employeefrom = #{employeefrom,jdbcType=VARCHAR},
+      rowupdatetime = #{rowupdatetime,jdbcType=TIMESTAMP},
+      curcreatetime = #{curcreatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.firstapp.dao.model.Employee">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="birthday" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="joindate" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="employeefrom" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="rowupdatetime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="curcreatetime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, birthday, joindate, employeefrom, rowupdatetime, curcreatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employees
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from employees
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.firstapp.dao.model.Employee">
+    insert into employees (id, name, birthday, 
+      joindate, employeefrom, rowupdatetime, 
+      curcreatetime)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
+      #{joindate,jdbcType=DATE}, #{employeefrom,jdbcType=VARCHAR}, #{rowupdatetime,jdbcType=TIMESTAMP}, 
+      #{curcreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.firstapp.dao.model.Employee">
+    insert into employees
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="joindate != null">
+        joindate,
+      </if>
+      <if test="employeefrom != null">
+        employeefrom,
+      </if>
+      <if test="rowupdatetime != null">
+        rowupdatetime,
+      </if>
+      <if test="curcreatetime != null">
+        curcreatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="joindate != null">
+        #{joindate,jdbcType=DATE},
+      </if>
+      <if test="employeefrom != null">
+        #{employeefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rowupdatetime != null">
+        #{rowupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="curcreatetime != null">
+        #{curcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.firstapp.dao.model.Employee">
+    update employees
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="joindate != null">
+        joindate = #{joindate,jdbcType=DATE},
+      </if>
+      <if test="employeefrom != null">
+        employeefrom = #{employeefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rowupdatetime != null">
+        rowupdatetime = #{rowupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="curcreatetime != null">
+        curcreatetime = #{curcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.firstapp.dao.model.Employee">
+    update employees
+    set name = #{name,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      joindate = #{joindate,jdbcType=DATE},
+      employeefrom = #{employeefrom,jdbcType=VARCHAR},
+      rowupdatetime = #{rowupdatetime,jdbcType=TIMESTAMP},
+      curcreatetime = #{curcreatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.firstapp.dao.model.Employee">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="birthday" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="joindate" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="employeefrom" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="rowupdatetime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="curcreatetime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, birthday, joindate, employeefrom, rowupdatetime, curcreatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employees
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from employees
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.firstapp.dao.model.Employee">
+    insert into employees (id, name, birthday, 
+      joindate, employeefrom, rowupdatetime, 
+      curcreatetime)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
+      #{joindate,jdbcType=DATE}, #{employeefrom,jdbcType=VARCHAR}, #{rowupdatetime,jdbcType=TIMESTAMP}, 
+      #{curcreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.firstapp.dao.model.Employee">
+    insert into employees
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="joindate != null">
+        joindate,
+      </if>
+      <if test="employeefrom != null">
+        employeefrom,
+      </if>
+      <if test="rowupdatetime != null">
+        rowupdatetime,
+      </if>
+      <if test="curcreatetime != null">
+        curcreatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="joindate != null">
+        #{joindate,jdbcType=DATE},
+      </if>
+      <if test="employeefrom != null">
+        #{employeefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rowupdatetime != null">
+        #{rowupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="curcreatetime != null">
+        #{curcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.firstapp.dao.model.Employee">
+    update employees
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="joindate != null">
+        joindate = #{joindate,jdbcType=DATE},
+      </if>
+      <if test="employeefrom != null">
+        employeefrom = #{employeefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rowupdatetime != null">
+        rowupdatetime = #{rowupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="curcreatetime != null">
+        curcreatetime = #{curcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.firstapp.dao.model.Employee">
+    update employees
+    set name = #{name,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      joindate = #{joindate,jdbcType=DATE},
+      employeefrom = #{employeefrom,jdbcType=VARCHAR},
+      rowupdatetime = #{rowupdatetime,jdbcType=TIMESTAMP},
+      curcreatetime = #{curcreatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.firstapp.dao.model.Employee">
     <constructor>
       <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
       <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
